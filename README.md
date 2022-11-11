@@ -176,4 +176,21 @@ int main()
         printf("a[3]:%d\n",a[3] );
 }
 ```
+step02-1_陣列很有用, 像找質數時, 可以用篩子法快速把全部質數找出來。
+```cpp
+#include <stdio.h>
+int main()
+{
+    int a[4]{10,20,30,40};
+        ///i:0 1 2 3
+    for(int i=0;i<4;i++){
+        printf("a[%d]:%d\n",i,a[i]);
+    }
+        ///i:3 2 1 0
+    for(int i=3;i>=0;i--){ ///倒過來迴圈
+        printf("%d ",a[i]);
+    }
+}
+```
+
 
