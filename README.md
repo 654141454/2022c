@@ -319,5 +319,106 @@ int main()
     }
 }
 ```
+1. step01-1_為了解變數的範圍,我們先用最簡單的, 在外面有個變數 int a=10; 在兩個函式中,如果修改到, 就會改到同一個變數。
+```cpp
+#include <stdio.h>
 
 
+int a=10;
+
+void func()
+{
+    a=30;
+    printf("func()中 a改成:%d\n",a);
+}
+int main()
+{
+    printf("main()中a是:%d\n",a);
+    func();
+    printf("main()中a是:%d\n",a);
+}
+```
+2. step01-2_在外面宣告的 int a=10; 是global變數,全世界看得到。void func() 裡宣告的 int a=20; 是 local 變數。
+```cpp
+#include <stdio.h>
+
+
+int a=10; ///Global全世界 全城變數
+
+void func()
+{
+    int a = 20; ///local 區域變數
+    printf("func()裡的a是:%d\n", a);
+    a=30;
+    printf("func()中a改成:%d\n", a);
+}
+int main()
+{
+    printf("main()中a是:%d\n",a);
+    func();
+    printf("main()中a是:%d\n",a);
+}
+```
+3. step02-1_函式的參數傳遞時, 請用上週教過的「教室有門,上面用透明膠膜封起來,有標籤int n」進來的數值20, 就會 int a=20 的意思。
+```cpp
+#include <stdio.h>
+int n=30;
+int funcA(int a,int b)
+{
+    printf("funcA()的a,b是:%d %d\n",a,b);
+    return a + b; ///20+20得到40把它傳出去
+}
+int funcB(int n)
+{
+    printf("funcB() 的 n 是:%d\n",n);
+    int ans = funcA(n,n);
+    return ans;
+}
+int main()
+{
+    int a=10, b=20;
+    funcB(b);
+    funcA(a,b);
+    printf("main()的a,b是:%d %d\n",a,b);
+}
+```
+4. step02-2_複習最大公因數,輾轉相除法, 利用 while迴圈來做, 重點是老大a, 老二b, 算出老三c=a%b。如果c==0, 那老二就是答案。
+```cpp
+#include <stdio.h>
+int main()
+{
+    int a,b,c;
+    scanf("%d%d",&a,&b);
+
+    while(1){
+        c=a%b;
+        printf("%d %d %d\n",a,b,c);
+
+        if(c==0) break;
+
+        a = b;
+        b = c;
+    }
+    printf("%d", b);
+}
+```
+5. step02-3_今天的大魔王, 是利用函式呼叫函式的方式, 來計算「輾轉相除法」找最大公因數。程式卻很簡單, 使用我們自己定義的 int gcd(int a, int b) 裡面如果a是0,b是答案。
+```cpp
+#include <stdio.h>
+int gcd (int a, int b)
+{
+    if( a==0 ) return b;
+    if( b==0 ) return a;
+
+    return gcd(b, a%b);
+}
+
+int main()
+{
+    int a,b;
+    scanf("%d%d", &a,&b);
+
+    int ans = gcd(a,b);
+    printf("%d",ans);
+}
+```
