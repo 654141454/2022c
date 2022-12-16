@@ -470,3 +470,21 @@ int main()
     }
 }
 ```
+4. step03-1_下週考試題目「字串反印」會用到今天教的幾個觀念,像是字串宣告 char line[3000];、字串利用 scanf()配合 %s 讀入 (不用加&)、字串的奇怪迴圈, 來數數有幾個字母在裡面, 也就是字串的長度。
+```cpp
+#include <stdio.h>
+char line[3000];
+int main()
+{
+    printf("請輸入一堆字母,不要有空格喔: ");
+
+    scanf("%s", line);
+    int N=0;
+    for(int i=0;line[i]!=0;i++){
+        N++;
+    }
+    for(int i=N-1;i>=0;i--){
+        printf("%c",line[i]);
+    }
+}
+```
