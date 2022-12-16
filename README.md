@@ -435,3 +435,38 @@ int main()
     printf("%s 字串\n",line);
 }
 ```
+2. step02-1_介紹完課本的 %d %f %c %s 後, 前一個課堂作業有用到 %s, 這個課堂作業則是使用 %c 及 %d 印出 65 66 67 及 97 98 99 等值, 對照 'A' 'B' 'C' 與 'a' 'b' 'c' 等, 讓大家了解 ASCII 美國國家標準資訊交換碼。
+```cpp
+#include <stdio.h>
+int main()
+{
+    printf("%c : %d\n",65,65);
+    printf("%c : %d\n",66,66);
+    printf("%c : %d\n",67,67);
+    printf("%c : %d\n",'A','A');
+    printf("%c : %d\n",'B','B');
+    printf("%c : %d\n",'C','C');
+    printf("上面用數字64及單引號 'a' 的結果都一樣\n");
+    printf("%c : %d\n",97,97);
+    printf("%c : %d\n",'a','a');
+}
+```
+3. step02-2_為了更了解 單引號(字母/字元) 及雙引號(字串、又叫字元陣列,是字元的複數), 我們印出一些特殊符號,像跳行(反斜線n)、TAB(反斜線t)、字串結尾(反斜線0), 用單引號括起來後, 便可以印出它的值。
+```cpp
+#include <stdio.h>
+int main()
+{
+    printf("=%c=%d=\n",65,65);
+    printf("=%c=%d=\n",'+','+');
+    printf("=%c=%d=\n",'\n','\n');
+    printf("=%c=%d=\n",'\t','\t');
+    printf("=%c=%d=\n",'\0','\0');
+
+    char line []="Hellow World AAA";
+    for(int i=0;  ;i++){
+        char c=line[i];
+        if(c==0)break;
+        printf("=%c",c);
+    }
+}
+```
