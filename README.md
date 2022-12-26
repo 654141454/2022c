@@ -319,6 +319,82 @@ int main()
     }
 }
 ```
+1. step01-1_剛剛考完(全世界入門的)泡泡排序法, 但裡面的 a[i] a[i+1] 及迴圈的 N-1 很容易寫錯, 所以老師教我最喜歡的 Selection Sort 選擇排序法, 口訣 左手i 右手j, 不對就交換。
+```cpp
+#include <stdio.h>
+int a[5]={5,4,3,2,1};
+int main()
+{
+    for(int i=0;i<5;i++){
+        for(int j=i+1;j<5;j++){
+            if(a[i]>a[j]){
+                int temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    for(int i=0;i<5;i++) printf("%d ",a[i] );
+}
+```
+2. step02-1_要理解二維陣列,就要照課本的方式來畫圖。從簡單的整數宣告、整數宣告並給初始值、陣列宣告、陣列宣告並給初始值、二維陣列宣告、二維陣列宣告並初始值, 小心右邊給值時, 是用大括號哦。
+```cpp
+#include <stdio.h>
+int main()
+{
+int a;
+int b=10;
+int c[3];
+int d[3]={10,20,30};
+int g[2][3];
+int h[2][3]={{10,20,30}, {11,21,31}};
+}
+```
+3. step02_2_接下來,把二維陣列拿來用, 配合2層迴圈,超完美。口訣還是「左手i、右手j」,在宣告時,看到的左邊、右邊, 在寫 for迴圈時,也是對應左邊、右邊。
+```cpp
+#include <stdio.h>
+int main()
+{
+    int a[2][3]={ {10,20,30}, {40,50,60} };
+    for(int i=0;i<2;i++){
+        for(int j=0;j<3;j++){
+            printf("%d ",a[i][j]);
+        }
+        printf("\n");
+    }
+}
+```
+4. step03-1_為了解決實習課的矩陣乘法,我們要先了解它是什麼(它有點難),所以先從數字乘法、向量乘法(內積對應項相乘、加起來)、矩陣乘法, 從簡單開始慢慢來。
+```cpp
+#include <stdio.h>
+int a[10][10], b[10][10];
+
+int main()
+{
+	int n, m;
+	scanf("%d%d", &n, &m);
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			scanf("%d", &a[i][j] );
+		}
+	}
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			scanf("%d", &b[i][j] );
+		}
+	}
+
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			printf("%d ", a[i][j] + b[i][j] );
+		}
+		printf("\n");
+	}
+
+}
+
+```
+
 1. step01-1_為了解變數的範圍,我們先用最簡單的, 在外面有個變數 int a=10; 在兩個函式中,如果修改到, 就會改到同一個變數。
 ```cpp
 #include <stdio.h>
@@ -486,5 +562,21 @@ int main()
     for(int i=N-1;i>=0;i--){
         printf("%c",line[i]);
     }
+}
+```
+1. step01-1_為了了解 scanf(), 我們查了 #include 裡的 stdio.h. 真的有這個檔案, 還看了課本附錄說的 math.h 及上週教的 string.h (有些外校同學會用到 stdlib.h 等)。
+```cpp
+#include<stdio.h>
+int main()
+{
+    char line[20]="Hello";
+    int N=strlen(line);
+    printf("Hellow字串的長度:%d\n",N);
+    
+    char line2[20];
+    strcpy(line,line);
+    printf("linr2 得到:%s\n",line2);
+    
+    printf("比較字串:trcmp(line,line2)得到%d\n",strcmp(line,line2));
 }
 ```
